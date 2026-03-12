@@ -6,77 +6,150 @@
   <title>SCE Charge Ready Home Meta 投放与建站建议</title>
   <meta name="description" content="SCE Charge Ready Home 项目的 Meta 投放与建站建议，包含参考案例、关键截图与页面承接结构建议。">
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;600;700&display=swap");
+
     :root {
-      --bg: #f5f1e8;
+      --bg: #efe7db;
       --paper: #fffdf8;
-      --ink: #1c1917;
-      --muted: #655d54;
-      --line: #ddd1c0;
-      --brand: #114b5f;
-      --brand-2: #1a936f;
-      --accent: #f2a541;
-      --soft: #f7efe1;
-      --soft-2: #eef6f5;
-      --shadow: rgba(25, 22, 18, 0.08);
+      --paper-2: #f8f2e8;
+      --ink: #1b1714;
+      --muted: #6b635b;
+      --line: rgba(43, 36, 29, 0.12);
+      --brand: #0f4c5c;
+      --brand-2: #1d7874;
+      --accent: #f0a23b;
+      --warm: #f6ecdc;
+      --shadow: 0 20px 60px rgba(35, 28, 22, 0.08);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       color: var(--ink);
-      font-family: "PingFang SC", "Noto Serif SC", "Source Han Serif SC", serif;
-      line-height: 1.75;
+      font-family: "Manrope", "PingFang SC", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(242, 165, 65, 0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(17, 75, 95, 0.15), transparent 24%),
-        linear-gradient(180deg, #efe5d7 0%, var(--bg) 22%, #f8f5ef 100%);
+        radial-gradient(circle at top left, rgba(240, 162, 59, 0.18), transparent 24%),
+        radial-gradient(circle at top right, rgba(15, 76, 92, 0.12), transparent 24%),
+        linear-gradient(180deg, #eadfce 0%, var(--bg) 18%, #f7f3eb 100%);
+      line-height: 1.7;
     }
 
     a {
-      color: var(--brand);
+      color: inherit;
       text-decoration: none;
     }
 
     a:hover {
-      text-decoration: underline;
+      opacity: 0.88;
     }
 
     img {
       display: block;
-      max-width: 100%;
-      border-radius: 18px;
+      width: 100%;
+      border-radius: 16px;
     }
 
     .page {
-      width: min(1160px, calc(100% - 32px));
+      width: min(1240px, calc(100% - 28px));
       margin: 0 auto;
-      padding: 32px 0 64px;
+      padding: 22px 0 60px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 12px;
+      z-index: 30;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      backdrop-filter: blur(16px);
+      background: rgba(255, 252, 247, 0.78);
+      box-shadow: 0 10px 30px rgba(40, 31, 23, 0.06);
+    }
+
+    .topbar .brandline {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+
+    .topbar nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .topbar nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .topbar nav a:hover {
+      background: rgba(15, 76, 92, 0.06);
+      color: var(--brand);
     }
 
     .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 48px 30px 34px;
-      border-radius: 30px;
-      color: #fffaf1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      padding: 26px;
+      border-radius: var(--radius-xl);
       background:
-        linear-gradient(135deg, rgba(17, 75, 95, 0.98), rgba(17, 75, 95, 0.9) 52%, rgba(242, 165, 65, 0.92)),
-        #114b5f;
-      box-shadow: 0 24px 70px rgba(25, 22, 18, 0.16);
+        linear-gradient(135deg, rgba(15, 76, 92, 0.98), rgba(17, 97, 109, 0.9) 52%, rgba(240, 162, 59, 0.88)),
+        #0f4c5c;
+      color: #fff8f0;
+      box-shadow: 0 28px 80px rgba(29, 23, 17, 0.16);
+      overflow: hidden;
+      position: relative;
     }
 
+    .hero::before,
     .hero::after {
       content: "";
       position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 248, 240, 0.09);
+      filter: blur(6px);
+    }
+
+    .hero::before {
       width: 340px;
       height: 340px;
-      right: -80px;
+      right: -110px;
+      top: -120px;
+    }
+
+    .hero::after {
+      width: 280px;
+      height: 280px;
+      left: 40%;
       bottom: -160px;
-      border-radius: 999px;
-      background: rgba(255, 250, 241, 0.12);
+    }
+
+    .hero-copy,
+    .hero-side {
+      position: relative;
+      z-index: 1;
     }
 
     .eyebrow {
@@ -85,70 +158,134 @@
       min-height: 36px;
       padding: 6px 12px;
       border-radius: 999px;
-      margin-bottom: 16px;
-      border: 1px solid rgba(255, 250, 241, 0.18);
-      background: rgba(255, 250, 241, 0.12);
-      font-size: 13px;
-      letter-spacing: 0.06em;
+      background: rgba(255, 248, 240, 0.12);
+      border: 1px solid rgba(255, 248, 240, 0.18);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     h1 {
-      margin: 0 0 14px;
-      max-width: 860px;
-      font-size: clamp(34px, 5.8vw, 64px);
-      line-height: 1.05;
+      margin: 16px 0 16px;
+      font-family: "Noto Serif SC", serif;
+      font-size: clamp(34px, 6vw, 68px);
+      line-height: 1.04;
       letter-spacing: -0.03em;
     }
 
     .hero p {
       margin: 0;
-      max-width: 820px;
+      max-width: 760px;
       font-size: 18px;
-      color: rgba(255, 250, 241, 0.92);
+      color: rgba(255, 248, 240, 0.92);
     }
 
-    .hero-meta {
+    .hero-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 20px;
     }
 
-    .hero-meta span {
+    .hero-badges span {
       display: inline-flex;
       align-items: center;
       min-height: 40px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255, 250, 241, 0.12);
-      border: 1px solid rgba(255, 250, 241, 0.16);
+      background: rgba(255, 248, 240, 0.12);
+      border: 1px solid rgba(255, 248, 240, 0.16);
       font-size: 14px;
     }
 
+    .hero-side {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .side-panel {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255, 248, 240, 0.1);
+      border: 1px solid rgba(255, 248, 240, 0.14);
+    }
+
+    .side-panel h3 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 248, 240, 0.74);
+    }
+
+    .side-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .side-panel li {
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255, 248, 240, 0.1);
+      border: 1px solid rgba(255, 248, 240, 0.14);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      font-size: 13px;
+      color: rgba(255, 248, 240, 0.76);
+    }
+
     .section {
-      margin-top: 22px;
+      margin-top: 20px;
       padding: 28px;
-      border-radius: 26px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 14px 34px var(--shadow);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 253, 248, 0.84);
+      border: 1px solid rgba(255, 255, 255, 0.44);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
     }
 
-    .section h2 {
-      margin: 0 0 14px;
-      font-size: 30px;
-      line-height: 1.2;
-    }
-
-    .intro {
-      color: var(--muted);
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
       margin-bottom: 18px;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 18px;
+    .section-title h2 {
+      margin: 0;
+      font-family: "Noto Serif SC", serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.12;
+    }
+
+    .section-title p {
+      margin: 0;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 15px;
     }
 
     .grid-3 {
@@ -157,17 +294,23 @@
       gap: 16px;
     }
 
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
     .card {
-      padding: 22px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, #fffdf8, #f6eee1);
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(246, 236, 220, 0.66));
       border: 1px solid var(--line);
     }
 
     .card h3 {
-      margin: 0 0 10px;
+      margin: 0 0 8px;
       font-size: 24px;
-      line-height: 1.25;
+      line-height: 1.24;
     }
 
     .card p {
@@ -175,485 +318,554 @@
       color: var(--muted);
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 12px 0 0;
-    }
-
-    .tag {
+    .tagline {
       display: inline-flex;
       align-items: center;
-      min-height: 30px;
-      padding: 5px 10px;
+      padding: 6px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(17, 75, 95, 0.12);
-      background: var(--soft-2);
+      background: rgba(15, 76, 92, 0.07);
       color: var(--brand);
-      font-size: 13px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 16px;
+    .card ul,
+    .brief ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
     }
 
-    .metric {
-      padding: 18px;
-      border-radius: 20px;
-      background: var(--soft);
-      border: 1px solid rgba(17, 75, 95, 0.08);
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 30px;
-      line-height: 1;
-      color: var(--brand);
-    }
-
-    .metric span {
-      display: block;
-      margin-top: 8px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    ul,
-    ol {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    li {
+    .card li,
+    .brief li {
       margin: 8px 0;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      overflow: hidden;
-      border-radius: 18px;
+    .reference {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: center;
+      padding: 18px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(247, 239, 226, 0.9));
       border: 1px solid var(--line);
-      font-size: 15px;
+      margin-top: 14px;
     }
 
-    th,
-    td {
-      padding: 14px 12px;
-      text-align: left;
-      vertical-align: top;
-      border-bottom: 1px solid var(--line);
+    .reference:nth-child(even) {
+      grid-template-columns: 0.95fr 1.05fr;
     }
 
-    th {
-      background: #efe4d6;
+    .reference:nth-child(even) .reference-copy {
+      order: -1;
+    }
+
+    .reference-image {
+      padding: 12px;
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 12px 34px rgba(32, 24, 18, 0.06);
+    }
+
+    .reference-copy h3 {
+      margin: 0 0 10px;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.18;
+    }
+
+    .reference-copy p {
+      margin: 0 0 12px;
       color: var(--muted);
-      font-size: 13px;
-      letter-spacing: 0.04em;
+    }
+
+    .reference-copy .source {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--warm);
+      color: var(--brand);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
-    tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .shot {
-      padding: 14px;
-      border-radius: 22px;
-      background: #fffaf3;
-      border: 1px solid #eadcc9;
-    }
-
-    .shot h3 {
-      margin: 12px 0 8px;
-      font-size: 20px;
-      line-height: 1.25;
-    }
-
-    .shot p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .shot-link {
-      display: inline-block;
+    .reference-copy a {
+      display: inline-flex;
       margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
       font-size: 14px;
       font-weight: 700;
     }
 
-    .process {
+    .creative-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-      margin-top: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
-    .step {
+    .creative {
       padding: 16px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, #f8f2e7, #fffdf8);
+      border-radius: 24px;
+      background: #fffdfa;
       border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(31, 24, 18, 0.05);
     }
 
-    .step strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--brand);
-      font-size: 14px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+    .creative h3 {
+      margin: 14px 0 8px;
+      font-size: 22px;
+      line-height: 1.25;
     }
 
-    .step span {
-      font-size: 15px;
-    }
-
-    .footer {
-      margin-top: 22px;
-      padding: 18px 22px;
-      border-radius: 18px;
-      background: rgba(255, 253, 248, 0.82);
-      border: 1px solid var(--line);
+    .creative p {
+      margin: 0;
       color: var(--muted);
       font-size: 14px;
     }
 
-    @media (max-width: 980px) {
-      .grid-2,
+    .creative .hint {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .step {
+      position: relative;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #fffdf8, #f3eadb);
+      border: 1px solid var(--line);
+      min-height: 150px;
+    }
+
+    .step strong {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .brief {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(15, 76, 92, 0.96), rgba(29, 120, 116, 0.92));
+      color: #fff9f1;
+    }
+
+    .brief h3 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      font-family: "Noto Serif SC", serif;
+    }
+
+    .brief p,
+    .brief li {
+      color: rgba(255, 249, 241, 0.88);
+    }
+
+    .brief .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .brief .chips span {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 249, 241, 0.12);
+      border: 1px solid rgba(255, 249, 241, 0.16);
+      font-size: 13px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      padding: 18px 22px;
+      border-radius: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      background: rgba(255, 253, 248, 0.84);
+      border: 1px solid var(--line);
+    }
+
+    @media (max-width: 1080px) {
+      .hero,
+      .reference,
       .grid-3,
-      .gallery,
-      .metrics,
-      .process {
+      .grid-2,
+      .creative-grid,
+      .flow,
+      .metrics {
         grid-template-columns: 1fr;
       }
 
-      .section,
-      .hero {
-        padding: 22px;
+      .reference:nth-child(even) .reference-copy {
+        order: 0;
       }
 
-      table,
-      thead,
-      tbody,
-      tr,
-      th,
-      td {
+      .topbar {
+        position: static;
+        border-radius: 24px;
+      }
+
+      .section-title {
         display: block;
       }
 
-      thead {
-        display: none;
+      .section-title p {
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100%, calc(100% - 20px));
       }
 
-      tr {
-        border-bottom: 1px solid var(--line);
-        padding: 14px 0;
+      .hero,
+      .section {
+        padding: 20px;
       }
 
-      td {
-        padding: 8px 0;
-        border-bottom: 0;
+      h1 {
+        font-size: 36px;
+      }
+
+      .reference {
+        padding: 12px;
+      }
+
+      .reference-image,
+      .creative,
+      .card,
+      .brief,
+      .step {
+        padding: 14px;
       }
     }
   </style>
 </head>
 <body>
   <main class="page">
+    <div class="topbar">
+      <div class="brandline">SCE Charge Ready Home Proposal Page</div>
+      <nav>
+        <a href="#logic">获客逻辑</a>
+        <a href="#landing-pages">落地页参考</a>
+        <a href="#creatives">素材参考</a>
+        <a href="#funnel">承接结构</a>
+      </nav>
+    </div>
+
     <section class="hero">
-      <span class="eyebrow">Proposal Reference Page</span>
-      <h1>SCE Charge Ready Home Meta 投放与建站建议</h1>
-      <p>基于当前南加州同类服务在 Meta 上的实际投放情况，我们整理出一套更适合本项目的广告表达、页面承接方式与素材方向，便于后续快速进入落地执行。</p>
-      <div class="hero-meta">
-        <span>项目场景：SCE / Edison 家充补贴获客</span>
-        <span>重点：广告钩子、资格筛选、落地页转化</span>
-        <span>输出：可直接用于页面与素材策划</span>
+      <div class="hero-copy">
+        <span class="eyebrow">Proposal Reference</span>
+        <h1>SCE Charge Ready Home<br>Meta 投放与建站建议</h1>
+        <p>基于当前南加州同类服务在 Meta 上的实际投放情况，我们整理出一套更适合本项目的广告表达、页面承接方式与素材方向，便于后续更快进入落地执行。</p>
+        <div class="hero-badges">
+          <span>项目场景：SCE / Edison 家充补贴获客</span>
+          <span>重点：广告钩子、资格筛选、落地页转化</span>
+          <span>输出：可直接用于页面与素材策划</span>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="side-panel">
+          <h3>本页的核心结论</h3>
+          <ul>
+            <li>冷流量最有效的切法不是直接卖安装，而是先卖“是否符合补贴资格”。</li>
+            <li>承接页最优动作不是立即预约，而是先做 60 秒资格自查。</li>
+            <li>素材必须同时讲清楚利益点、资格门槛和施工可信度。</li>
+          </ul>
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <strong>$4,200</strong>
+            <span>最强冷流量利益点</span>
+          </div>
+          <div class="metric">
+            <strong>60 秒</strong>
+            <span>最优承接动作</span>
+          </div>
+          <div class="metric">
+            <strong>3 段式</strong>
+            <span>广告点击到预约</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="grid-2">
+    <section class="section" id="logic">
+      <div class="section-title">
+        <h2>当前这类业务最有效的获客逻辑</h2>
+        <p>和传统本地服务广告不同，家充补贴场景的关键不只是“引流”，而是先筛出真正符合资格、并且有升级需求的人群。</p>
+      </div>
+
+      <div class="grid-3">
         <article class="card">
-          <h3>这类业务目前最有效的获客逻辑</h3>
-          <ol>
-            <li>先用 <strong>`补贴金额 + 资格门槛`</strong> 激发点击，而不是直接卖安装服务。</li>
-            <li>进入页面后先做 <strong>`60 秒资格自查`</strong>，把冷流量转成高意向线索。</li>
-            <li>结果页再分流到 <strong>`预约评估 / 电话咨询 / 非补贴替代方案`</strong>。</li>
-          </ol>
-          <div class="metrics">
-            <div class="metric">
-              <strong>$4,200</strong>
-              <span>最强冷流量利益点</span>
-            </div>
-            <div class="metric">
-              <strong>60 秒</strong>
-              <span>最优承接动作是资格自查</span>
-            </div>
-            <div class="metric">
-              <strong>3 段式</strong>
-              <span>广告点击 → 资格筛选 → 预约转化</span>
-            </div>
-          </div>
-        </article>
-        <article class="card">
-          <h3>对本项目更建议采用的方向</h3>
+          <span class="tagline">Cold Traffic</span>
+          <h3>先卖资格与补贴</h3>
+          <p>广告首屏要先回答“我能省多少钱、我是不是有资格”，而不是一上来讲公司介绍。</p>
           <ul>
-            <li>冷启动广告主打 `最高 $4,200 电箱升级补贴`，但同步写清楚 `SCE / Single-family / Panel &lt; 200A`。</li>
-            <li>独立站优先做 `补贴资格页`，而不是普通企业站首页。</li>
-            <li>素材要同时兼顾 `利益点` 和 `施工可信度`，把补贴、专业度与一站式服务放在同一个故事里。</li>
-            <li>再营销阶段强化 `案例、FAQ、许可证、保险、评价`，提升高意向线索的预约率。</li>
+            <li>`最高 $4,200` 是最强点击驱动</li>
+            <li>`SCE / Single-family / Panel &lt; 200A` 要同步出现</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tagline">Landing Page</span>
+          <h3>先筛选，再转化</h3>
+          <p>把冷流量先引导到 60 秒资格自查，再推进预约评估，线索质量会明显更高。</p>
+          <ul>
+            <li>比直接预约更低心理门槛</li>
+            <li>更方便销售后续分层跟进</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tagline">Trust Layer</span>
+          <h3>再用案例和专业度收口</h3>
+          <p>施工前后对比、Permit、验收、持证信息、FAQ 和评价，是后半段真正提高预约率的要素。</p>
+          <ul>
+            <li>讲省钱，也要讲“做得靠谱不折腾”</li>
+            <li>这是本地服务商成交的关键差异点</li>
           </ul>
         </article>
       </div>
     </section>
 
-    <section class="section">
-      <h2>参考案例方向</h2>
-      <p class="intro">我们筛选了三类当前最有代表性的参考案例，分别对应 `资格筛选型`、`强过滤型` 和 `施工展示型`。这里的重点不是照搬，而是提炼出更适合本项目的组合方式。</p>
-      <table>
-        <thead>
-          <tr>
-            <th>参考案例</th>
-            <th>主要角色</th>
-            <th>核心优点</th>
-            <th>适合借鉴的部分</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>案例 A</td>
-            <td>资格筛选型主参考</td>
-            <td>广告、问卷、结果页衔接完整</td>
-            <td>`$4,200` 钩子、`4 个问题 / 60 秒` 问卷、结果分流逻辑</td>
-          </tr>
-          <tr>
-            <td>案例 B</td>
-            <td>强过滤文案参考</td>
-            <td>线索过滤更直接，浪费更少</td>
-            <td>`Edison customers only`、`Most people do not qualify`、严格资格过滤</td>
-          </tr>
-          <tr>
-            <td>案例 C</td>
-            <td>施工与信任展示参考</td>
-            <td>现场感和本地服务商可信度更强</td>
-            <td>施工过程、案例感、FAQ、评价、服务页结构</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="grid-3" style="margin-top:16px;">
-        <article class="card">
-          <h3>案例 A：资格筛选型</h3>
-          <p>更像一套成熟的 Meta 获客漏斗，适合用来定义本项目的主路径。</p>
-          <div class="tags">
-            <span class="tag">来源：Saiyan Electric</span>
-            <span class="tag">SCE Pays $4,200</span>
-            <span class="tag">Question 1 of 4</span>
-            <span class="tag">60 seconds</span>
-          </div>
-        </article>
-        <article class="card">
-          <h3>案例 B：强过滤型</h3>
-          <p>把“不符合的人先挡掉”，更适合提高线索纯度，减少销售端无效跟进。</p>
-          <div class="tags">
-            <span class="tag">来源：Amp Up California</span>
-            <span class="tag">Edison customers only</span>
-            <span class="tag">No apartments</span>
-            <span class="tag">Strict eligibility</span>
-          </div>
-        </article>
-        <article class="card">
-          <h3>案例 C：施工展示型</h3>
-          <p>更像高意向承接页，强调施工、评价和真实本地服务能力。</p>
-          <div class="tags">
-            <span class="tag">来源：Smart Plug EV</span>
-            <span class="tag">Panel upgrade</span>
-            <span class="tag">Preferred contractor</span>
-            <span class="tag">Free estimate</span>
-          </div>
-        </article>
+    <section class="section" id="landing-pages">
+      <div class="section-title">
+        <h2>落地页参考与关键截图</h2>
+        <p>下面三类页面分别对应本项目最值得借鉴的三种承接方式：资格筛选型、强过滤型，以及服务承接型。</p>
       </div>
-    </section>
 
-    <section class="section">
-      <h2>落地页参考与关键截图</h2>
-      <p class="intro">从页面结构上看，最有效的不是“大而全介绍公司”，而是先帮助用户确认资格，再推进预约。下面三类页面分别对应本项目最值得借鉴的三种承接方式。</p>
-      <div class="gallery">
-        <article class="shot">
-          <img src="assets/screenshots/lp-saiyan-edison.png" alt="Saiyan Electric landing page screenshot">
-          <h3>案例 A：资格筛选型首屏</h3>
+      <article class="reference">
+        <div class="reference-image">
+          <img src="assets/screenshots/lp-saiyan-edison.png" alt="资格筛选型首屏截图">
+        </div>
+        <div class="reference-copy">
+          <span class="source">案例 A · 来源 Saiyan Electric</span>
+          <h3>资格筛选型首屏</h3>
           <p>这类页面把 `补贴金额`、`资格自查` 和 `低门槛 CTA` 放在同一屏，最适合承接 Meta 冷流量。</p>
-          <p><strong>关键参考点：</strong>大字利益点、60 秒问卷、明确资格预判。</p>
-          <a class="shot-link" href="https://edison.saiyanelectric.com/" target="_blank" rel="noreferrer">落地页地址：edison.saiyanelectric.com</a>
-        </article>
-        <article class="shot">
-          <img src="assets/screenshots/lp-ampup-typeform.png" alt="Amp Up California landing page screenshot">
-          <h3>案例 B：强过滤型表单页</h3>
+          <ul>
+            <li>大字利益点：`Up to $4,200`</li>
+            <li>问卷承接：`Answer 4 quick questions. Takes 60 seconds.`</li>
+            <li>CTA 明确：`Check If I Qualify`</li>
+          </ul>
+          <a href="https://edison.saiyanelectric.com/" target="_blank" rel="noreferrer">查看参考页面</a>
+        </div>
+      </article>
+
+      <article class="reference">
+        <div class="reference-image">
+          <img src="assets/screenshots/lp-ampup-typeform.png" alt="强过滤型问卷截图">
+        </div>
+        <div class="reference-copy">
+          <span class="source">案例 B · 来源 Amp Up California</span>
+          <h3>强过滤型资格问卷</h3>
           <p>这类页面更强调 `先过滤、再转化`，适合用于提高线索纯度，减少无效咨询。</p>
-          <p><strong>关键参考点：</strong>限制条件前置、资格门槛明确、点击后快速进入表单。</p>
-          <a class="shot-link" href="https://amp-up-ca.typeform.com/to/K6UA4p4P" target="_blank" rel="noreferrer">落地页地址：amp-up-ca.typeform.com/to/K6UA4p4P</a>
-        </article>
-        <article class="shot">
-          <img src="assets/screenshots/lp-smartplug.png" alt="Smart Plug EV landing page screenshot">
-          <h3>案例 C：服务承接型页面</h3>
-          <p>更适合高意向用户承接，参考价值在于案例感、FAQ、评价与本地服务信任感的组织方式。</p>
-          <p><strong>关键参考点：</strong>服务项清晰、评价明显、免费估价 CTA 明确。</p>
-          <a class="shot-link" href="https://smartplugev.com/" target="_blank" rel="noreferrer">落地页地址：smartplugev.com</a>
-        </article>
-      </div>
-      <div class="grid-3" style="margin-top:16px;">
-        <article class="card">
-          <h3>我们建议借鉴的首屏结构</h3>
           <ul>
-            <li>明确利益点：`最高 $4,200 电箱升级补贴`</li>
-            <li>明确限制条件：`SCE / Single-family / Panel &lt; 200A`</li>
-            <li>把首要 CTA 设为：`60 秒资格自查`</li>
+            <li>从第一个问题开始就先确认 `SCE customer`</li>
+            <li>后续可继续承接 ZIP、DAC、房屋条件等判断</li>
+            <li>更适合高客单场景控制线索浪费</li>
           </ul>
-        </article>
-        <article class="card">
-          <h3>我们建议借鉴的中段结构</h3>
+          <a href="https://amp-up-ca.typeform.com/to/K6UA4p4P" target="_blank" rel="noreferrer">查看参考页面</a>
+        </div>
+      </article>
+
+      <article class="reference">
+        <div class="reference-image">
+          <img src="assets/screenshots/lp-smartplug.png" alt="服务承接型页面截图">
+        </div>
+        <div class="reference-copy">
+          <span class="source">案例 C · 来源 Smart Plug EV</span>
+          <h3>服务承接型页面</h3>
+          <p>这类页面更适合高意向用户承接，参考价值在于案例感、FAQ、评价与本地服务信任感的组织方式。</p>
           <ul>
-            <li>解释为什么很多家庭现在装不了 L2</li>
-            <li>说明补贴覆盖什么、不覆盖什么</li>
-            <li>把 `Permit / Inspection / Installation` 做成可视化流程</li>
+            <li>首屏明确服务项与本地联系方式</li>
+            <li>CTA 清晰：`Get Estimate`</li>
+            <li>更像成交页，而不是冷流量教育页</li>
           </ul>
-        </article>
-        <article class="card">
-          <h3>我们建议借鉴的底部结构</h3>
-          <ul>
-            <li>FAQ + 真实评价 + 施工前后对比</li>
-            <li>电话、预约表单、服务区域</li>
-            <li>对不符合补贴的人给出替代方案</li>
-          </ul>
-        </article>
-      </div>
+          <a href="https://smartplugev.com/" target="_blank" rel="noreferrer">查看参考页面</a>
+        </div>
+      </article>
     </section>
 
-    <section class="section">
-      <h2>广告素材参考与关键截图</h2>
-      <p class="intro">当前同类投放里最清晰的共性是：广告先讲利益点，再通过资格条件收口；另一个方向则是直接用施工现场提高可信度。下面三张图基本覆盖了本项目最值得优先测试的素材方向。</p>
-      <div class="gallery">
-        <article class="shot">
-          <img src="assets/ad-details/saiyan/page_ad_1.jpg" alt="Saiyan Electric ad creative">
+    <section class="section" id="creatives">
+      <div class="section-title">
+        <h2>广告素材参考与建议借鉴点</h2>
+        <p>当前同类投放里最清晰的共性是：广告先讲利益点，再通过资格条件收口；另一个方向则是直接用施工现场提高可信度。</p>
+      </div>
+
+      <div class="creative-grid">
+        <article class="creative">
+          <img src="assets/ad-details/saiyan/page_ad_1.jpg" alt="补贴金额型广告截图">
           <h3>素材方向 A：补贴金额型</h3>
           <p>用 `$4,200` 和强利益点制造点击理由，再把流量导向资格筛选页。</p>
-          <p><strong>建议借鉴：</strong>金额大字、简短资格提示、立即自查 CTA。</p>
-          <a class="shot-link" href="https://www.facebook.com/ads/library?id=1369568134840947" target="_blank" rel="noreferrer">广告来源参考</a>
+          <div class="hint">建议借鉴：金额大字、简短资格提示、立即自查 CTA。</div>
         </article>
-        <article class="shot">
-          <img src="assets/ad-details/ampup/page_ad_1.jpg" alt="Amp Up California ad creative">
+
+        <article class="creative">
+          <img src="assets/ad-details/ampup/page_ad_1.jpg" alt="资格过滤型广告截图">
           <h3>素材方向 B：资格过滤型</h3>
           <p>除了讲补贴，还直接点出 `single-family`、`assistance` 等条件，减少无效点击。</p>
-          <p><strong>建议借鉴：</strong>限制条件前置、让用户先判断自己是否适合。</p>
-          <a class="shot-link" href="https://www.facebook.com/ads/library?id=924863300019406" target="_blank" rel="noreferrer">广告来源参考</a>
+          <div class="hint">建议借鉴：限制条件前置，让用户先判断自己是否适合。</div>
         </article>
-        <article class="shot">
-          <img src="assets/ad-details/smartplug/page_ad_1.jpg" alt="Smart Plug EV ad creative">
+
+        <article class="creative">
+          <img src="assets/ad-details/smartplug/page_ad_1.jpg" alt="施工现场型广告截图">
           <h3>素材方向 C：施工现场型</h3>
           <p>通过 panel upgrade 现场镜头和服务商身份来建立专业感与真实感。</p>
-          <p><strong>建议借鉴：</strong>旧面板、升级过程、完工结果、现场施工氛围。</p>
-          <a class="shot-link" href="https://www.facebook.com/ads/library?id=1465007608295767" target="_blank" rel="noreferrer">广告来源参考</a>
+          <div class="hint">建议借鉴：旧面板、升级过程、完工结果、现场施工氛围。</div>
         </article>
       </div>
     </section>
 
     <section class="section">
-      <h2>建议本项目优先测试的素材角度</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>素材方向</th>
-            <th>推荐主钩子</th>
-            <th>适用阶段</th>
-            <th>执行重点</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>补贴资格型</td>
-            <td>`SCE 用户最高可获 $4,200`、`60 秒查看是否符合资格`</td>
-            <td>冷启动第一优先级</td>
-            <td>大字利益点 + 资格条件叠字 + 资格自查 CTA</td>
-          </tr>
-          <tr>
-            <td>问题诊断型</td>
-            <td>`你的电箱达标吗？`、`为什么很多家庭装不了 Level 2？`</td>
-            <td>冷流量教育、再营销</td>
-            <td>旧 panel、100A/125A/200A 对比、痛点解释</td>
-          </tr>
-          <tr>
-            <td>一站式省心型</td>
-            <td>`补贴、Permit、电改、安装，我们一次搞定`</td>
-            <td>高意向转化</td>
-            <td>Permit、inspection、licensed electrician、完工后使用场景</td>
-          </tr>
-          <tr>
-            <td>施工前后对比型</td>
-            <td>`Before: old panel`、`After: 200A EV-ready home`</td>
-            <td>再营销、信任提升</td>
-            <td>Before / after、现场镜头、整洁完工图</td>
-          </tr>
-          <tr>
-            <td>非补贴替代方案型</td>
-            <td>`不符合 $4,200？仍可能有更低成本安装方案`</td>
-            <td>结果页和再营销</td>
-            <td>避免“不符合就流失”，继续承接自费需求</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="section">
-      <h2>建议本项目采用的页面承接流程</h2>
-      <p class="intro">建议把站点设计成“先筛选、再成交”的结构，而不是让所有访客都直接进入预约页。</p>
-      <div class="process">
-        <div class="step">
-          <strong>Step 1</strong>
-          <span>Meta 广告先用补贴金额和资格条件获取点击</span>
-        </div>
-        <div class="step">
-          <strong>Step 2</strong>
-          <span>落地页首屏清晰说明 `SCE / Single-family / Panel &lt; 200A`</span>
-        </div>
-        <div class="step">
-          <strong>Step 3</strong>
-          <span>用户完成 `60 秒资格自查`，获得预判结果</span>
-        </div>
-        <div class="step">
-          <strong>Step 4</strong>
-          <span>符合补贴者进入 `免费评估 / 上门勘测`</span>
-        </div>
-        <div class="step">
-          <strong>Step 5</strong>
-          <span>不符合补贴者进入 `基础安装 / 自费方案` 分流页</span>
-        </div>
+      <div class="section-title">
+        <h2>建议优先测试的 4 个方向</h2>
+        <p>与其同时铺太多方向，不如先围绕最有机会跑通的 4 条素材线建立初始测试矩阵。</p>
       </div>
-    </section>
 
-    <section class="section">
-      <h2>本项目的页面建设建议</h2>
       <div class="grid-2">
         <article class="card">
-          <h3>建议优先搭建的页面</h3>
+          <span class="tagline">Direction 01</span>
+          <h3>补贴资格型</h3>
+          <p>最适合冷启动第一轮测试。</p>
           <ul>
-            <li>`主资格页`：承接 Meta 冷流量</li>
-            <li>`套餐与服务页`：解释电改 + 充电桩 + 安装一站式</li>
-            <li>`案例 / FAQ / 评价页`：服务信任建设</li>
+            <li>主钩子：`SCE 用户最高可获 $4,200`</li>
+            <li>副钩子：`60 秒查看是否符合资格`</li>
+            <li>画面重点：金额大字 + 资格条件 + 自查按钮</li>
           </ul>
         </article>
+
         <article class="card">
-          <h3>建议首批表单字段</h3>
+          <span class="tagline">Direction 02</span>
+          <h3>问题诊断型</h3>
+          <p>适合解释为什么很多家庭装不了 Level 2。</p>
+          <ul>
+            <li>主钩子：`你的电箱达标吗？`</li>
+            <li>画面重点：100A / 125A / 200A 对比</li>
+            <li>适合冷流量教育与再营销</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tagline">Direction 03</span>
+          <h3>一站式省心型</h3>
+          <p>更适合高意向线索转化。</p>
+          <ul>
+            <li>主钩子：`补贴、Permit、电改、安装一次搞定`</li>
+            <li>画面重点：Permit、inspection、licensed electrician</li>
+            <li>适合搭配案例和服务承接页</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tagline">Direction 04</span>
+          <h3>施工前后对比型</h3>
+          <p>最适合做再营销信任补强。</p>
+          <ul>
+            <li>主钩子：`Before: old panel / After: EV-ready home`</li>
+            <li>画面重点：前后对比、现场施工、完工特写</li>
+            <li>适合和评价、FAQ 一起承接高意向访客</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="funnel">
+      <div class="section-title">
+        <h2>建议本项目采用的页面承接结构</h2>
+        <p>建议把站点设计成“先筛选、再成交”的结构，而不是让所有访客都直接进入预约页。</p>
+      </div>
+
+      <div class="flow">
+        <article class="step">
+          <strong>1</strong>
+          <h3>广告点击</h3>
+          <p>先用补贴金额和资格条件获取高相关点击。</p>
+        </article>
+        <article class="step">
+          <strong>2</strong>
+          <h3>资格页首屏</h3>
+          <p>明确 `SCE / Single-family / Panel &lt; 200A` 等门槛。</p>
+        </article>
+        <article class="step">
+          <strong>3</strong>
+          <h3>60 秒自查</h3>
+          <p>通过短问卷做预判与线索分层。</p>
+        </article>
+        <article class="step">
+          <strong>4</strong>
+          <h3>预约评估</h3>
+          <p>把符合补贴的人推进免费评估或电话咨询。</p>
+        </article>
+        <article class="step">
+          <strong>5</strong>
+          <h3>替代方案分流</h3>
+          <p>对不符合补贴者继续承接自费安装需求。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        <article class="brief">
+          <h3>建议优先搭建的页面</h3>
+          <p>如果要快速开始测试，不建议先做大而全企业站。建议先围绕 Meta 获客链路搭建以下页面：</p>
+          <ul>
+            <li>`主资格页`：承接冷流量，完成资格筛选</li>
+            <li>`套餐与服务页`：说明电改 + 充电桩 + 安装一站式</li>
+            <li>`案例 / FAQ / 评价页`：补足信任与转化细节</li>
+          </ul>
+          <div class="chips">
+            <span>资格筛选</span>
+            <span>服务说明</span>
+            <span>案例信任</span>
+          </div>
+        </article>
+
+        <article class="brief">
+          <h3>建议首批收集的线索字段</h3>
+          <p>字段不宜过多，但必须足够支持销售判断资格与施工复杂度。</p>
           <ul>
             <li>ZIP code</li>
             <li>房屋类型</li>
@@ -662,18 +874,19 @@
             <li>是否已有 EV 或 180 天内计划购车</li>
             <li>联系方式</li>
           </ul>
+          <div class="chips">
+            <span>ZIP</span>
+            <span>房屋条件</span>
+            <span>电箱条件</span>
+            <span>联系方式</span>
+          </div>
         </article>
       </div>
     </section>
 
-    <section class="section">
-      <h2>一句话总结</h2>
-      <p>如果本项目希望在 Meta 上更高效地获取高质量线索，建议采用 <strong>`补贴资格钩子 + 60 秒自查页 + 一站式安装承接 + 再营销信任补强`</strong> 的组合，而不是直接用传统企业站首页承接冷流量。</p>
-    </section>
-
-    <footer class="footer">
+    <div class="footer">
       本页面基于 2026-03-12 当日可访问的公开广告库与落地页信息整理，主要用于本项目方案讨论与页面策划参考。所列案例截图与链接仅作行业参考，不代表对其经营表现的直接评价。
-    </footer>
+    </div>
   </main>
 </body>
 </html>
